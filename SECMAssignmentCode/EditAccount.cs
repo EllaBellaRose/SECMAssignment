@@ -46,69 +46,70 @@ namespace SECMAssignmentCode
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string username = usernametb.Text;
 
             if (MenuPage.add == true)
             {
                 // Code for adding an account
 
-
-
-                StreamReader reader = new StreamReader("login.txt");
-                String[] fileLines = File.ReadAllLines("login.txt");
-
                 int length = File.ReadAllLines("login.txt").Length;
-                string[,] loginCred = new string[length, 3];
-                string[] userNames = new string[length];
+                string[,] loginCred = new string[length+1, 3];
+                string[] userNames = new string[length+1];
 
 
-                FileInfo loginFile = new FileInfo("login.txt");
-
-
-                string username = usernametb.Text;
+               
                 string password = passwordtb.Text;
+                int mod;
 
 
-                if ((usernametb.Text == "") || (passwordtb.Text == "")&& (yesModcb.Checked)||(noModcb.Checked) && !((yesModcb.Checked) && (noModcb.Checked)))
+                // To be valid it needs
+                // Text in the username
+                // Text in the password
+                // One of the checkboxes checked
+                // But not both
+
+                if ((usernametb.Text != "") || (passwordtb.Text != "")&& ((yesModcb.Checked) || (noModcb.Checked)))
                 {
-                    MessageBox.Show("Invalid login informatin");
-                }
-                else
-                {
-                    for (int y = 0; y < length; y++)
+
+
+                    if(yesModcb.Checked)
                     {
-                        for (int x = 0; x < 3; x++)
-                        {
-                            loginCred[y, x] = fileLines[y].Split(',')[x];
-                            if (x == 0)
-                            {
-                                userNames[y] = fileLines[y].Split(',')[x]; ;
-                            }
-
-                        }
-
+                        mod = 1;
                     }
-
-
-
-                    int pos = Array.IndexOf(userNames, username); //Gets the position of where that string is in the array
+                    else
+                    {
+                        mod = 0;
+                    }
+                  
+                    int pos = Array.IndexOf(LoginPage.userNames, username); //Gets the position of where that string is in the array
                     if (pos < 0)
                     {
                         // Not in the list so can add it
 
-                        FileInfo newSave = new FileInfo("login.txt");
 
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(newSave))
+                        User newUser = new User(username, password, mod); //Created the object and add it to the array
+                        LoginPage.loginCred[length, 0] = username;
+                        LoginPage.loginCred[length, 1] = password;
+                        LoginPage.loginCred[length, 2] = mod.ToString();
+                        LoginPage.userNames[length] = username;
+
+
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter("login.txt", true))
                         {
-
+                            file.WriteLine(username + "," + password + "," + mod);
                         }
 
+                        MessageBox.Show("Successfully added user: " + username + " to the system");
+                        usernametb.Text = "";
+                        passwordtb.Text = "";
+                        yesModcb.Checked = false;
+                        noModcb.Checked = false;
 
 
                     }
                     else
                     {
-                        // Already in the login page
+                        // Already in the login textfile
 
                         MessageBox.Show("An account with this username already exists");
                         usernametb.Text = "";
@@ -119,11 +120,51 @@ namespace SECMAssignmentCode
                     }
 
                 }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
 
             else
             {
                 // Code for deleting an account
+
+
+            if(usernametb.Text != "")
+                {
+
+                    int pos = Array.IndexOf(LoginPage.userNames, username); //Gets the position of where that string is in the array
+                    if (pos < 0) // Does not exist
+                    {
+                        MessageBox.Show("This user does not exist");
+
+                    }
+                    else /// Does exist
+                    {
+
+
+
+
+
+
+
+                    }
+
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid username");
+                }
+
+
+
+
+
+
 
 
 

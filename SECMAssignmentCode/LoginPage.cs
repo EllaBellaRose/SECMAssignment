@@ -14,6 +14,10 @@ namespace SECMAssignmentCode
     public partial class LoginPage : Form
     {
         public static bool hasAuthority = false;
+        public static int length = File.ReadAllLines("login.txt").Length;
+        public static string[,] loginCred = new string[length, 3];
+        public static string[] userNames = new string[length];
+
 
         public LoginPage()
         {
@@ -22,15 +26,9 @@ namespace SECMAssignmentCode
 
         private void donebtn_Click(object sender, EventArgs e)
         {
-            StreamReader reader = new StreamReader("login.txt");
+            
             String[] fileLines = File.ReadAllLines("login.txt");
 
-            int length = File.ReadAllLines("login.txt").Length;
-            string[,] loginCred = new string[length, 3];
-            string[] userNames = new string[length];
-
-
-            FileInfo loginFile = new FileInfo("login.txt");
 
 
             string username = usernametb.Text;
@@ -48,25 +46,28 @@ namespace SECMAssignmentCode
                     for (int x = 0; x < 3; x++)
                     {
                         loginCred[y,x] = fileLines[y].Split(',')[x];
+
                         if(x ==0)
                         {
-                            userNames[y] = fileLines[y].Split(',')[x]; ;
+                            userNames[y] = fileLines[y].Split(',')[x]; // Adds the username to a list of usernames
+                            int mod = Convert.ToInt32(loginCred[y, 2]);
+                            User newUser = new User(loginCred[y, 0], loginCred[y, 1], mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
                         }
 
                     }
 
                 }
 
-
+                
 
                 int pos = Array.IndexOf(userNames, username); //Gets the position of where that string is in the array
-                if(pos < 0)
+                if(pos < 0) // Pos will be -1 if the array does not contain the username
                 {
                     MessageBox.Show("Username not found");
                 }
                 else
                 {
-                    if(loginCred[pos,1] != password)
+                    if(loginCred[pos,1] != password) // Checks if the password is correct
                     {
                         MessageBox.Show("Incorrect Password");
                     }
