@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace SECMAssignmentCode
 {
-    public partial class Form1 : Form
+    public partial class StartPage : Form
     {
-        public Form1()
+        bool create = false;
+
+        public StartPage()
         {
             InitializeComponent();
         }
@@ -20,6 +22,22 @@ namespace SECMAssignmentCode
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void loginbtn_Click(object sender, EventArgs e)
+        {
+            create = false;
+            this.Hide();
+            LoginPage f2 = new LoginPage();
+            f2.Show();
+        }
+
+        private void createAccbtn_Click(object sender, EventArgs e)
+        {
+            create = true;
+            this.Hide();
+            LoginPage f2 = new LoginPage();
+            f2.Show();
         }
     }
 }
