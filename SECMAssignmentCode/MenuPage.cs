@@ -33,7 +33,7 @@ namespace SECMAssignmentCode
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            if(LoginPage.hasAuthority == true)
+            if(LoginPage.hasAuthority == true) // If the user is a mod then the option to delete and add an account appears, if they are not a mod they don't appear
             {
                 addAccbtn.Show();
                 delAccbtn.Show();
@@ -54,6 +54,13 @@ namespace SECMAssignmentCode
             this.Hide();
             EditAccount f4 = new EditAccount();
             f4.Show();
+        }
+
+        private void prefbtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PrefEx f5 = new PrefEx();
+            f5.Show();
         }
     }
 }

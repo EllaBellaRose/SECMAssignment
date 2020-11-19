@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.yesModcb = new System.Windows.Forms.CheckBox();
             this.noModcb = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.donedeladdbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addlb
@@ -132,6 +132,7 @@
             this.yesModcb.Text = "Modification Access";
             this.yesModcb.UseVisualStyleBackColor = true;
             this.yesModcb.Visible = false;
+            this.yesModcb.CheckedChanged += new System.EventHandler(this.yesModcb_CheckedChanged);
             // 
             // noModcb
             // 
@@ -144,17 +145,18 @@
             this.noModcb.Text = "No Modification Access";
             this.noModcb.UseVisualStyleBackColor = true;
             this.noModcb.Visible = false;
+            this.noModcb.CheckedChanged += new System.EventHandler(this.noModcb_CheckedChanged);
             // 
-            // button1
+            // donedeladdbtn
             // 
-            this.button1.Font = new System.Drawing.Font("Berlin Sans FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(452, 448);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 73);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Done";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.donedeladdbtn.Font = new System.Drawing.Font("Berlin Sans FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.donedeladdbtn.Location = new System.Drawing.Point(452, 448);
+            this.donedeladdbtn.Name = "donedeladdbtn";
+            this.donedeladdbtn.Size = new System.Drawing.Size(166, 73);
+            this.donedeladdbtn.TabIndex = 20;
+            this.donedeladdbtn.Text = "Done";
+            this.donedeladdbtn.UseVisualStyleBackColor = true;
+            this.donedeladdbtn.Click += new System.EventHandler(this.donedeladdbtn_Click);
             // 
             // EditAccount
             // 
@@ -162,7 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1078, 594);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.donedeladdbtn);
             this.Controls.Add(this.noModcb);
             this.Controls.Add(this.yesModcb);
             this.Controls.Add(this.passwordtb);
@@ -193,6 +195,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox yesModcb;
         private System.Windows.Forms.CheckBox noModcb;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button donedeladdbtn;
     }
 }

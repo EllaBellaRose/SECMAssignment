@@ -66,6 +66,7 @@
             this.prefbtn.TabIndex = 11;
             this.prefbtn.Text = "Edit pref/ex slots";
             this.prefbtn.UseVisualStyleBackColor = true;
+            this.prefbtn.Click += new System.EventHandler(this.prefbtn_Click);
             // 
             // exitbtn
             // 

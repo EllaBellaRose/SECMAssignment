@@ -15,7 +15,7 @@ namespace SECMAssignmentCode
     {
         public static bool hasAuthority = false;
         public static int length = File.ReadAllLines("login.txt").Length;
-        public static string[,] loginCred = new string[length, 3];
+        public static string[,] loginCred = new string[length, 4];
         public static string[] userNames = new string[length];
 
 
@@ -26,8 +26,10 @@ namespace SECMAssignmentCode
 
         private void donebtn_Click(object sender, EventArgs e)
         {
-            
-            String[] fileLines = File.ReadAllLines("login.txt");
+            // This is called when the Done nutton to log in is pressed
+
+
+            String[] fileLines = File.ReadAllLines("login.txt"); //The text file all the login details are
 
 
 
@@ -35,22 +37,22 @@ namespace SECMAssignmentCode
             string password = passwordtb.Text;
 
 
-            if ((usernametb.Text == "") || (passwordtb.Text == ""))
+            if ((usernametb.Text == "") || (passwordtb.Text == "")) // Validation that both text boxes in the form are not empty
             {
                 MessageBox.Show("Invalid login informatin");
             }
             else
             {
-                for (int y = 0; y < length; y++)
+                for (int y = 0; y < length; y++) // This for loop goes through the text file and splits all the data up by a comma
                 {
                     for (int x = 0; x < 3; x++)
                     {
-                        loginCred[y,x] = fileLines[y].Split(',')[x];
+                        loginCred[y,x] = fileLines[y].Split(',')[x]; // After splitting the data it is added into an array in the same x,y
 
-                        if(x ==0)
+                        if(x ==0) // This is only for the first collumn which is the username
                         {
                             userNames[y] = fileLines[y].Split(',')[x]; // Adds the username to a list of usernames
-                            int mod = Convert.ToInt32(loginCred[y, 2]);
+                            int mod = Convert.ToInt32(loginCred[y, 2]); /// mod is if the user has modicfication access (teacher / ability to add and delete accounts / able to arrange meetings)
                             User newUser = new User(loginCred[y, 0], loginCred[y, 1], mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
                         }
 
@@ -65,7 +67,7 @@ namespace SECMAssignmentCode
                 {
                     MessageBox.Show("Username not found");
                 }
-                else
+                else // If pos == 1 or more then the textfile contains it
                 {
                     if(loginCred[pos,1] != password) // Checks if the password is correct
                     {
@@ -73,7 +75,8 @@ namespace SECMAssignmentCode
                     }
                     else
                     {
-                         if(loginCred[pos,2] == "0")
+                     
+                            if(loginCred[pos,2] == "0") // Checking if the user is a mod or not
                             {
                                 hasAuthority = false;
                             }
@@ -81,29 +84,15 @@ namespace SECMAssignmentCode
                             {
                                 hasAuthority = true;
                             }
-                        MessageBox.Show("Successful login");
+                            MessageBox.Show("Successful login");
 
-                        this.Hide();
-                        MenuPage f3 = new MenuPage();
-                        f3.Show();
-
-
-
-
-
-
-
-
-
+                            this.Hide();
+                            MenuPage f3 = new MenuPage();
+                            f3.Show();
+                   
                     }
                 }
-
-
-
             }
-
-
-
         }
     }
 }
