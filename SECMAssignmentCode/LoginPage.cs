@@ -17,6 +17,7 @@ namespace SECMAssignmentCode
         public static int length = File.ReadAllLines("login.txt").Length;
         public static string[,] loginCred = new string[length, 4];
         public static string[] userNames = new string[length];
+        public static string userName;
 
 
         public LoginPage()
@@ -35,6 +36,7 @@ namespace SECMAssignmentCode
 
             string username = usernametb.Text;
             string password = passwordtb.Text;
+            userName = username;
 
 
             if ((usernametb.Text == "") || (passwordtb.Text == "")) // Validation that both text boxes in the form are not empty

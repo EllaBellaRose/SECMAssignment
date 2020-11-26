@@ -16,7 +16,7 @@ namespace SECMAssignmentCode
 {
     public partial class PrefEx : Form
     {
-        ComboBox[,] prefArray = new ComboBox[4, 8];
+        ComboBox[,] prefArray = new ComboBox[5, 9];
 
 
         public PrefEx()
@@ -105,7 +105,7 @@ namespace SECMAssignmentCode
         {
             string fileName;
 
-            fileName = (User.userName + ".txt");  // The text file each user's preferences and exclusions are saved is their username
+            fileName = (LoginPage.userName + ".txt");  // The text file each user's preferences and exclusions are saved is their username
 
             FileInfo saveData = new FileInfo(fileName);
 

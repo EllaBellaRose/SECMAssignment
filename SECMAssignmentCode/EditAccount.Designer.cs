@@ -64,13 +64,14 @@
             // 
             // backToMenubtn
             // 
+            this.backToMenubtn.BackColor = System.Drawing.Color.LightSkyBlue;
             this.backToMenubtn.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backToMenubtn.Location = new System.Drawing.Point(22, 482);
             this.backToMenubtn.Name = "backToMenubtn";
             this.backToMenubtn.Size = new System.Drawing.Size(128, 100);
             this.backToMenubtn.TabIndex = 12;
             this.backToMenubtn.Text = "Back to Menu";
-            this.backToMenubtn.UseVisualStyleBackColor = true;
+            this.backToMenubtn.UseVisualStyleBackColor = false;
             this.backToMenubtn.Click += new System.EventHandler(this.backToMenubtn_Click);
             // 
             // usernamelb
@@ -149,13 +150,14 @@
             // 
             // donedeladdbtn
             // 
+            this.donedeladdbtn.BackColor = System.Drawing.Color.LightSkyBlue;
             this.donedeladdbtn.Font = new System.Drawing.Font("Berlin Sans FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.donedeladdbtn.Location = new System.Drawing.Point(452, 448);
             this.donedeladdbtn.Name = "donedeladdbtn";
             this.donedeladdbtn.Size = new System.Drawing.Size(166, 73);
             this.donedeladdbtn.TabIndex = 20;
             this.donedeladdbtn.Text = "Done";
-            this.donedeladdbtn.UseVisualStyleBackColor = true;
+            this.donedeladdbtn.UseVisualStyleBackColor = false;
             this.donedeladdbtn.Click += new System.EventHandler(this.donedeladdbtn_Click);
             // 
             // EditAccount

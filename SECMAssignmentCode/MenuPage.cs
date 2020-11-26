@@ -37,6 +37,7 @@ namespace SECMAssignmentCode
             {
                 addAccbtn.Show();
                 delAccbtn.Show();
+                arrangebtn.Show();
             }
         }
 
@@ -61,6 +62,14 @@ namespace SECMAssignmentCode
             this.Hide();
             PrefEx f5 = new PrefEx();
             f5.Show();
+        }
+
+        private void arrangebtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ArrangeMeeting f6 = new ArrangeMeeting();
+            f6.Show();
+
         }
     }
 }
