@@ -13,11 +13,13 @@ namespace SECMAssignmentCode
 {
     public partial class ArrangeMeeting : Form
     {
-        List<string> meetingUsers = new List<string>();
+        private static List<User> meetingUsers = new List<User>();
+        public static List<string> meetingUserNames = new List<string>();
         List<string> prefList = new List<string>();
         List<string> exList = new List<string>();
-        List<string> allAvailableList = new List<string>();
+        public static List<string> allAvailableList = new List<string>();
 
+        internal static List<User> MeetingUsers { get => meetingUsers; set => meetingUsers = value; }
 
         public ArrangeMeeting()
         {
@@ -41,8 +43,18 @@ namespace SECMAssignmentCode
                 {
                     if (LoginPage.userNames.Contains(namestb.Text))
                     {
+                        foreach(User user in LoginPage.UserList)
+                        {
+                            if(userName == user.getUserName()) //ISSUE IS: THE LAST USER IS 12345678 AND SAYS THAT EACH USER ADDED IS THAT ONE
+                            {
+                                MeetingUsers.Add(user);
+                                meetingUserNames.Add(user.getUserName());
+                            }
+                            
+                        }
+
+
                         nameslbx.Items.Add(namestb.Text);
-                        meetingUsers.Add(userName);
                         savebtn.Show();
                     }
                     else
@@ -58,13 +70,11 @@ namespace SECMAssignmentCode
         {
             groupBox1.Hide();
             groupBox2.Show();
-            availablelbx.Show();
             selectbtn.Show();
 
             string userName;
 
-            MessageBox.Show("A list of all the preferenes and exclusions will appear. The times in the exlusions have been taken out of the preferences list so it makes that slot unavailable.");
-    
+          
             // For each item in names listbox
             // Go through each user, go through their textfile with their pref/exclusions
             // Add each pref to a list and each exclude to a list (not duplicating)
@@ -160,10 +170,6 @@ namespace SECMAssignmentCode
                 {
                     allAvailableList.Remove(item);
                 }
-                else
-                {
-                    availablelbx.Items.Add(item);
-                }
             }
 
 
@@ -256,6 +262,13 @@ namespace SECMAssignmentCode
                     validAddition(pref, day, " 5pm");
                     break;
             }
+        }
+
+        private void selectbtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BookRoom f7 = new BookRoom();
+            f7.Show();
         }
     }
 }

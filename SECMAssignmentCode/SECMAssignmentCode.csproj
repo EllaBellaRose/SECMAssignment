@@ -52,6 +52,12 @@
     <Compile Include="ArrangeMeeting.Designer.cs">
       <DependentUpon>ArrangeMeeting.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookRoom.Designer.cs">
+      <DependentUpon>BookRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,7 @@
     <Compile Include="LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Meeting.cs" />
     <Compile Include="MenuPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +88,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="ArrangeMeeting.resx">
       <DependentUpon>ArrangeMeeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookRoom.resx">
+      <DependentUpon>BookRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditAccount.resx">
       <DependentUpon>EditAccount.cs</DependentUpon>

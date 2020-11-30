@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.availablelbx = new System.Windows.Forms.ListBox();
             this.selectbtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -101,7 +100,7 @@
             // 
             this.savebtn.BackColor = System.Drawing.Color.LightSkyBlue;
             this.savebtn.Font = new System.Drawing.Font("Berlin Sans FB", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.savebtn.Location = new System.Drawing.Point(247, 383);
+            this.savebtn.Location = new System.Drawing.Point(259, 383);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(94, 57);
             this.savebtn.TabIndex = 14;
@@ -157,7 +156,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.exlbx);
             this.groupBox2.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(347, 164);
+            this.groupBox2.Location = new System.Drawing.Point(397, 139);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(479, 392);
             this.groupBox2.TabIndex = 19;
@@ -165,28 +164,18 @@
             this.groupBox2.Text = "Availability of Users";
             this.groupBox2.Visible = false;
             // 
-            // availablelbx
-            // 
-            this.availablelbx.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availablelbx.FormattingEnabled = true;
-            this.availablelbx.ItemHeight = 26;
-            this.availablelbx.Location = new System.Drawing.Point(843, 32);
-            this.availablelbx.Name = "availablelbx";
-            this.availablelbx.Size = new System.Drawing.Size(250, 524);
-            this.availablelbx.TabIndex = 20;
-            this.availablelbx.Visible = false;
-            // 
             // selectbtn
             // 
             this.selectbtn.BackColor = System.Drawing.Color.LightSkyBlue;
             this.selectbtn.Font = new System.Drawing.Font("Berlin Sans FB", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectbtn.Location = new System.Drawing.Point(1099, 257);
+            this.selectbtn.Location = new System.Drawing.Point(941, 259);
             this.selectbtn.Name = "selectbtn";
-            this.selectbtn.Size = new System.Drawing.Size(86, 52);
+            this.selectbtn.Size = new System.Drawing.Size(183, 99);
             this.selectbtn.TabIndex = 21;
-            this.selectbtn.Text = "Select";
+            this.selectbtn.Text = "Select Room";
             this.selectbtn.UseVisualStyleBackColor = false;
             this.selectbtn.Visible = false;
+            this.selectbtn.Click += new System.EventHandler(this.selectbtn_Click);
             // 
             // ArrangeMeeting
             // 
@@ -195,7 +184,6 @@
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1191, 594);
             this.Controls.Add(this.selectbtn);
-            this.Controls.Add(this.availablelbx);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.groupBox1);
@@ -225,7 +213,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox availablelbx;
         private System.Windows.Forms.Button selectbtn;
     }
 }

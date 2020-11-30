@@ -18,6 +18,7 @@ namespace SECMAssignmentCode
         public static string[,] loginCred = new string[length, 4];
         public static string[] userNames = new string[length];
         public static string userName;
+        private static List<User> userList = new List<User>();
 
 
         public LoginPage()
@@ -25,17 +26,14 @@ namespace SECMAssignmentCode
             InitializeComponent();
         }
 
+        internal static List<User> UserList { get => userList; set => userList = value; }
+
         private void donebtn_Click(object sender, EventArgs e)
         {
             // This is called when the Done nutton to log in is pressed
 
 
             String[] fileLines = File.ReadAllLines("login.txt"); //The text file all the login details are
-
-
-
-
-
 
             string username = usernametb.Text;
             string password = passwordtb.Text;
@@ -59,6 +57,7 @@ namespace SECMAssignmentCode
                             userNames[y] = fileLines[y].Split(',')[x]; // Adds the username to a list of usernames
                             int mod = Convert.ToInt32(loginCred[y, 2]); /// mod is if the user has modicfication access (teacher / ability to add and delete accounts / able to arrange meetings)
                             User newUser = new User(loginCred[y, 0], loginCred[y, 1], mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
+                            UserList.Add(newUser);
                         }
 
                     }
