@@ -17,6 +17,7 @@ namespace SECMAssignmentCode
         public static List<string> meetingUserNames = new List<string>();
         List<string> prefList = new List<string>();
         List<string> exList = new List<string>();
+        public static List<string> userNames = new List<string>();
         public static List<string> allAvailableList = new List<string>();
 
         internal static List<User> MeetingUsers { get => meetingUsers; set => meetingUsers = value; }
@@ -40,10 +41,10 @@ namespace SECMAssignmentCode
                     MessageBox.Show("You have already added this user");
                 }
                 else
-                {
+                {/*
                     if (LoginPage.userNames.Contains(namestb.Text))
                     {
-                        foreach(User user in LoginPage.UserList)
+                        foreach(User user in LoginPage.userList())
                         {
                             if(userName == user.getUserName()) //ISSUE IS: THE LAST USER IS 12345678 AND SAYS THAT EACH USER ADDED IS THAT ONE
                             {
@@ -52,7 +53,8 @@ namespace SECMAssignmentCode
                             }
                             
                         }
-
+                       
+                        
 
                         nameslbx.Items.Add(namestb.Text);
                         savebtn.Show();
@@ -61,6 +63,7 @@ namespace SECMAssignmentCode
                     {
                         MessageBox.Show("This user does not exist");
                     }
+                */
                 }
             }
             namestb.Text = "";
@@ -189,6 +192,28 @@ namespace SECMAssignmentCode
             allAvailableList.Add(day + " 5pm");
         }
 
+        void createUserList()
+        {
+            String[] fileLines = File.ReadAllLines("login.txt"); //The text file all the login details are
+
+            int length = 8; 
+
+            for (int y = 0; y < length; y++) // This for loop goes through the text file and splits all the data up by a comma
+            {
+                for (int x = 0; x < 3; x++)
+                {
+
+                    if (x == 0) // This is only for the first collumn which is the username
+                    {
+                        userNames[y] = fileLines[y].Split(',')[x]; // Adds the username to a list of usernames
+
+                    }
+
+                }
+            }
+
+        }
+            
 
         void validAddition(bool pref, string day, string time)
         {

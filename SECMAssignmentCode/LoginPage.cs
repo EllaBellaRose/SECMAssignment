@@ -14,19 +14,20 @@ namespace SECMAssignmentCode
     public partial class LoginPage : Form
     {
         public static bool hasAuthority = false;
-        public static int length = File.ReadAllLines("login.txt").Length;
-        public static string[,] loginCred = new string[length, 4];
+        //public int length = File.ReadAllLines("login.txt").Length;
+        public static int length = File.ReadLines("login.txt").Count();
+        public static string[,] loginCred = new string[length, 3];
         public static string[] userNames = new string[length];
         public static string userName;
-        private static List<User> userList = new List<User>();
-
+        List<User> userList = new List<User>();
+        //public static User[] users = new User[length];
 
         public LoginPage()
         {
             InitializeComponent();
         }
 
-        internal static List<User> UserList { get => userList; set => userList = value; }
+       // internal static List<User> UserList { get => userList; set => userList = value; }
 
         private void donebtn_Click(object sender, EventArgs e)
         {
@@ -52,19 +53,25 @@ namespace SECMAssignmentCode
                     {
                         loginCred[y,x] = fileLines[y].Split(',')[x]; // After splitting the data it is added into an array in the same x,y
 
-                        if(x ==0) // This is only for the first collumn which is the username
+                        if (x == 0) // This is only for the first collumn which is the username
                         {
                             userNames[y] = fileLines[y].Split(',')[x]; // Adds the username to a list of usernames
                             int mod = Convert.ToInt32(loginCred[y, 2]); /// mod is if the user has modicfication access (teacher / ability to add and delete accounts / able to arrange meetings)
-                            User newUser = new User(loginCred[y, 0], loginCred[y, 1], mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
-                            UserList.Add(newUser);
+                            string newPassword = fileLines[y].Split(',')[1];
+                            User newUser = new User (loginCred[y, 0], newPassword, mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
+                            addUser(newUser);
+                           // userList.Add(newUser);
+                            //MessageBox.Show(newUser.getUserName());
                         }
 
                     }
 
                 }
 
-                
+                foreach(User user in userList)
+                {
+                    MessageBox.Show(user.getUserName());
+                }
 
                 int pos = Array.IndexOf(userNames, username); //Gets the position of where that string is in the array
                 if(pos < 0) // Pos will be -1 if the array does not contain the username
@@ -98,5 +105,16 @@ namespace SECMAssignmentCode
                 }
             }
         }
+
+        void addUser(User newUser)
+        {
+            userList.Add(newUser);
+        }
+
+        List<User> GetUserList()
+        {
+            return userList;
+        }
     }
+
 }
