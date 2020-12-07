@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.selectbtn = new System.Windows.Forms.Button();
+            this.menubtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +115,7 @@
             this.exlbx.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exlbx.FormattingEnabled = true;
             this.exlbx.ItemHeight = 26;
-            this.exlbx.Location = new System.Drawing.Point(263, 72);
+            this.exlbx.Location = new System.Drawing.Point(259, 120);
             this.exlbx.Name = "exlbx";
             this.exlbx.Size = new System.Drawing.Size(201, 290);
             this.exlbx.TabIndex = 15;
@@ -124,7 +125,7 @@
             this.preflbx.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.preflbx.FormattingEnabled = true;
             this.preflbx.ItemHeight = 26;
-            this.preflbx.Location = new System.Drawing.Point(21, 72);
+            this.preflbx.Location = new System.Drawing.Point(17, 120);
             this.preflbx.Name = "preflbx";
             this.preflbx.Size = new System.Drawing.Size(201, 290);
             this.preflbx.TabIndex = 16;
@@ -133,21 +134,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Berlin Sans FB", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 38);
+            this.label1.Location = new System.Drawing.Point(11, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 31);
+            this.label1.Size = new System.Drawing.Size(147, 31);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Prefer";
+            this.label1.Text = "Preferences";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(266, 38);
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(258, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 31);
+            this.label2.Size = new System.Drawing.Size(171, 92);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Exclude";
+            this.label2.Text = "Exclusions \r\n(This includes slots\r\nusers are already in\r\na meeting)";
             // 
             // groupBox2
             // 
@@ -158,7 +159,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(397, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(479, 392);
+            this.groupBox2.Size = new System.Drawing.Size(479, 433);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Availability of Users";
@@ -177,12 +178,25 @@
             this.selectbtn.Visible = false;
             this.selectbtn.Click += new System.EventHandler(this.selectbtn_Click);
             // 
+            // menubtn
+            // 
+            this.menubtn.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.menubtn.Font = new System.Drawing.Font("Berlin Sans FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menubtn.Location = new System.Drawing.Point(914, 504);
+            this.menubtn.Name = "menubtn";
+            this.menubtn.Size = new System.Drawing.Size(256, 68);
+            this.menubtn.TabIndex = 64;
+            this.menubtn.Text = "Return To Menu";
+            this.menubtn.UseVisualStyleBackColor = false;
+            this.menubtn.Click += new System.EventHandler(this.menubtn_Click);
+            // 
             // ArrangeMeeting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1191, 594);
+            this.Controls.Add(this.menubtn);
             this.Controls.Add(this.selectbtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.savebtn);
@@ -214,5 +228,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button selectbtn;
+        private System.Windows.Forms.Button menubtn;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace SECMAssignmentCode
 {
-    class User
+    public class User
     {
-        public static string userName, passWord;
-        public static bool mod;
+        public static List<User> userList;
+        public string userName, passWord;
+        public bool mod;
+        //public static List<Meeting> inMeetings;
 
 
         public User(string newName, string newPass, int newMod)
@@ -59,17 +62,6 @@ namespace SECMAssignmentCode
         {
             return mod;
         }
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

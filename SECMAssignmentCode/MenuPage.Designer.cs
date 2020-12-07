@@ -36,6 +36,7 @@
             this.backToLoginbtn = new System.Windows.Forms.Button();
             this.delAccbtn = new System.Windows.Forms.Button();
             this.arrangebtn = new System.Windows.Forms.Button();
+            this.viewMeetingbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titlelb
@@ -133,12 +134,25 @@
             this.arrangebtn.Visible = false;
             this.arrangebtn.Click += new System.EventHandler(this.arrangebtn_Click);
             // 
+            // viewMeetingbtn
+            // 
+            this.viewMeetingbtn.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.viewMeetingbtn.Font = new System.Drawing.Font("Berlin Sans FB", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewMeetingbtn.Location = new System.Drawing.Point(401, 258);
+            this.viewMeetingbtn.Name = "viewMeetingbtn";
+            this.viewMeetingbtn.Size = new System.Drawing.Size(224, 102);
+            this.viewMeetingbtn.TabIndex = 17;
+            this.viewMeetingbtn.Text = "View meetings I\'m attending";
+            this.viewMeetingbtn.UseVisualStyleBackColor = false;
+            this.viewMeetingbtn.Click += new System.EventHandler(this.viewMeetingbtn_Click);
+            // 
             // MenuPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1078, 594);
+            this.Controls.Add(this.viewMeetingbtn);
             this.Controls.Add(this.arrangebtn);
             this.Controls.Add(this.delAccbtn);
             this.Controls.Add(this.backToLoginbtn);
@@ -165,5 +179,6 @@
         private System.Windows.Forms.Button backToLoginbtn;
         private System.Windows.Forms.Button delAccbtn;
         private System.Windows.Forms.Button arrangebtn;
+        private System.Windows.Forms.Button viewMeetingbtn;
     }
 }

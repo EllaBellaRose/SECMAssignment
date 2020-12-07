@@ -8,8 +8,9 @@ namespace SECMAssignmentCode
 {
     class Meeting
     {
-        public static int day, time, room;
-        public static List<User> members = new List<User>();
+        public static List<Meeting> listOfMeetings;
+        public int day, time, room;
+        public List<User> members = new List<User>();
 
         public Meeting(string newDay, int newTime)
         {
@@ -48,7 +49,12 @@ namespace SECMAssignmentCode
 
         }
 
-        public string getDay()
+        public int getDayInt()
+        {
+            return day;
+        }
+
+        public string getDayString()
         {
             switch (day)
             {
@@ -85,6 +91,11 @@ namespace SECMAssignmentCode
         public int getRoom()
         {
             return room;
+        }
+
+        public int getNumOfMembers()
+        {
+            return members.Count();
         }
     }
 }

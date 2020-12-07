@@ -58,6 +58,12 @@
     <Compile Include="BookRoom.Designer.cs">
       <DependentUpon>BookRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentMeetings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentMeetings.Designer.cs">
+      <DependentUpon>CurrentMeetings.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookRoom.resx">
       <DependentUpon>BookRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentMeetings.resx">
+      <DependentUpon>CurrentMeetings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditAccount.resx">
       <DependentUpon>EditAccount.cs</DependentUpon>

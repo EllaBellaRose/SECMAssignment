@@ -71,5 +71,12 @@ namespace SECMAssignmentCode
             f6.Show();
 
         }
+
+        private void viewMeetingbtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CurrentMeetings f8 = new CurrentMeetings();
+            f8.Show();
+        }
     }
 }

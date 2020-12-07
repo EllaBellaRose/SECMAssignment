@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SECMAssignmentCode
 {
@@ -19,12 +21,15 @@ namespace SECMAssignmentCode
         public static string[,] loginCred = new string[length, 3];
         public static string[] userNames = new string[length];
         public static string userName;
+        
         List<User> userList = new List<User>();
+        //List<User> userList = new List<User>();
         //public static User[] users = new User[length];
 
         public LoginPage()
         {
             InitializeComponent();
+
         }
 
        // internal static List<User> UserList { get => userList; set => userList = value; }
@@ -43,7 +48,7 @@ namespace SECMAssignmentCode
 
             if ((usernametb.Text == "") || (passwordtb.Text == "")) // Validation that both text boxes in the form are not empty
             {
-                MessageBox.Show("Invalid login informatin");
+                MessageBox.Show("Invalid login information");
             }
             else
             {
@@ -53,25 +58,17 @@ namespace SECMAssignmentCode
                     {
                         loginCred[y,x] = fileLines[y].Split(',')[x]; // After splitting the data it is added into an array in the same x,y
 
-                        if (x == 0) // This is only for the first collumn which is the username
+                        if (x == 2) // This is only for the last column which is the moderator status
                         {
-                            userNames[y] = fileLines[y].Split(',')[x]; // Adds the username to a list of usernames
+                            userNames[y] = loginCred[y, 0]; // Adds the username to a list of usernames
                             int mod = Convert.ToInt32(loginCred[y, 2]); /// mod is if the user has modicfication access (teacher / ability to add and delete accounts / able to arrange meetings)
-                            string newPassword = fileLines[y].Split(',')[1];
-                            User newUser = new User (loginCred[y, 0], newPassword, mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
-                            addUser(newUser);
-                           // userList.Add(newUser);
-                            //MessageBox.Show(newUser.getUserName());
+                            User newUser = new User (loginCred[y, 0], loginCred[y,1], mod); // Creates a new object for the user and passes in the username, password and either a 1/0 depending on if that user has admin powers
+                            userList.Add(newUser);
                         }
-
                     }
-
                 }
+                User.userList = userList;
 
-                foreach(User user in userList)
-                {
-                    MessageBox.Show(user.getUserName());
-                }
 
                 int pos = Array.IndexOf(userNames, username); //Gets the position of where that string is in the array
                 if(pos < 0) // Pos will be -1 if the array does not contain the username
@@ -110,11 +107,12 @@ namespace SECMAssignmentCode
         {
             userList.Add(newUser);
         }
-
-        List<User> GetUserList()
+        /*
+        ArrayList GetUserList()
         {
             return userList;
         }
+        */
     }
 
 }

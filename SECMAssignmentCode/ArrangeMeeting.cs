@@ -13,17 +13,16 @@ namespace SECMAssignmentCode
 {
     public partial class ArrangeMeeting : Form
     {
-        private static List<User> meetingUsers = new List<User>();
-        public static List<string> meetingUserNames = new List<string>();
-        List<string> prefList = new List<string>();
+        public List<User> meetingUsers = new List<User>();
+        public List<string> meetingUserNames = new List<string>();
+        public static List<string> prefList = new List<string>();
         List<string> exList = new List<string>();
-        public static List<string> userNames = new List<string>();
+        public List<string> userNames = new List<string>();
         public static List<string> allAvailableList = new List<string>();
-
-        internal static List<User> MeetingUsers { get => meetingUsers; set => meetingUsers = value; }
-
+        
         public ArrangeMeeting()
         {
+
             InitializeComponent();
         }
 
@@ -41,14 +40,15 @@ namespace SECMAssignmentCode
                     MessageBox.Show("You have already added this user");
                 }
                 else
-                {/*
+                {
+                    
                     if (LoginPage.userNames.Contains(namestb.Text))
                     {
-                        foreach(User user in LoginPage.userList())
+                        foreach(User user in User.userList)
                         {
                             if(userName == user.getUserName()) //ISSUE IS: THE LAST USER IS 12345678 AND SAYS THAT EACH USER ADDED IS THAT ONE
                             {
-                                MeetingUsers.Add(user);
+                                meetingUsers.Add(user);
                                 meetingUserNames.Add(user.getUserName());
                             }
                             
@@ -63,7 +63,7 @@ namespace SECMAssignmentCode
                     {
                         MessageBox.Show("This user does not exist");
                     }
-                */
+                    
                 }
             }
             namestb.Text = "";
@@ -109,7 +109,11 @@ namespace SECMAssignmentCode
                         }
                         else if (slots[y, x].ToString() == "e")
                         {
-                            switchYCases(y, x, false);                            
+                            switchYCases(y, x, false);
+                        }
+                        else if (slots[y, x].ToString() == "b")
+                        {
+                            switchYCases(y, x, false);
                         }
 
 
@@ -292,8 +296,15 @@ namespace SECMAssignmentCode
         private void selectbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            BookRoom f7 = new BookRoom();
+            BookRoom f7 = new BookRoom(meetingUsers);
             f7.Show();
+        }
+
+        private void menubtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MenuPage f3 = new MenuPage();
+            f3.Show();
         }
     }
 }

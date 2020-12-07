@@ -35,6 +35,8 @@
             this.confirmbtn = new System.Windows.Forms.Button();
             this.availableRoomsGB = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.preflbx = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.availableRoomsGB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +101,7 @@
             this.availableRoomsGB.Controls.Add(this.roomlbx);
             this.availableRoomsGB.Controls.Add(this.confirmbtn);
             this.availableRoomsGB.Font = new System.Drawing.Font("Berlin Sans FB", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availableRoomsGB.Location = new System.Drawing.Point(348, 109);
+            this.availableRoomsGB.Location = new System.Drawing.Point(498, 107);
             this.availableRoomsGB.Name = "availableRoomsGB";
             this.availableRoomsGB.Size = new System.Drawing.Size(543, 446);
             this.availableRoomsGB.TabIndex = 25;
@@ -115,12 +117,34 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "     Room 1 has\r\nSepcial Equiptment";
             // 
+            // preflbx
+            // 
+            this.preflbx.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.preflbx.FormattingEnabled = true;
+            this.preflbx.ItemHeight = 26;
+            this.preflbx.Location = new System.Drawing.Point(280, 163);
+            this.preflbx.Name = "preflbx";
+            this.preflbx.Size = new System.Drawing.Size(201, 290);
+            this.preflbx.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(274, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(179, 26);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "User Preferences";
+            // 
             // BookRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1078, 594);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.preflbx);
             this.Controls.Add(this.availableRoomsGB);
             this.Controls.Add(this.selectbtn);
             this.Controls.Add(this.availablelbx);
@@ -144,5 +168,7 @@
         private System.Windows.Forms.Button confirmbtn;
         private System.Windows.Forms.GroupBox availableRoomsGB;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox preflbx;
+        private System.Windows.Forms.Label label2;
     }
 }

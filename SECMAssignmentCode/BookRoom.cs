@@ -20,9 +20,20 @@ namespace SECMAssignmentCode
         string[,] room5 = new string[5, 9];
         string dayOfMeeting;
         int y, x, timeOfMeeting;
+        List<User> usersInMeeting = new List<User>();
 
-        public BookRoom()
+
+        // WHAT I NEED TO DO:
+
+            // When a meeting is booked change each users avaiabiliy (the textfile with exclusions and preferences)
+            // Change that slot to a b for booked, on the arrange meeting form add each slot that is an e/b
+            // to the exclusions because they cannot be used
+            // Make button on menu saying "View Meetings" to show all teh time slots and room locations that taht user is booked in a meeting for
+            // If they want to exit taht meeting then just ask if they want to exclude/prefer/don't mind and change their availability
+
+        public BookRoom(List<User> meetingUsers)
         {
+            usersInMeeting = meetingUsers;
             InitializeComponent();
         }
 
@@ -32,6 +43,11 @@ namespace SECMAssignmentCode
             foreach (string item in ArrangeMeeting.allAvailableList)
             {
                 availablelbx.Items.Add(item);
+            }
+
+            foreach(string item in ArrangeMeeting.prefList)
+            {
+                preflbx.Items.Add(item);
             }
 
 
@@ -242,37 +258,151 @@ namespace SECMAssignmentCode
                     break;
             }
 
-
-           foreach(User user in ArrangeMeeting.MeetingUsers)
+            
+           foreach(User user in usersInMeeting)
             {
+                int x, y;
                 meeting.addUser(user);
-                MessageBox.Show(user.getUserName().ToString());
+                y = meeting.getDayInt();
+                x = correctX(meeting.getTime());
+                editUsersFiles(user.getUserName(), y, x);
+
             }
 
+            makeMeetingtxt(meeting);
+
+            this.Hide();
+            MenuPage f1 = new MenuPage();
+            f1.Show();
+        }
+
+        int correctX(int x)
+        {
+            switch(x)
+            {
+                case 9:
+                    return 0;
+                case 10:
+                    return 1;
+                case 11:
+                    return 2;
+                case 12:
+                    return 3;
+                case 13:
+                    return 4;
+                case 14:
+                    return 5;
+                case 15:
+                    return 6;
+                case 16:
+                    return 7;
+                case 17:
+                    return 8;
+                default:
+                    return 0;
+
+            }
+        }
+
+        void editUsersFiles(string filename, int ySlot, int xSlot)
+        {
+            // Put all info into a 4x7 array
+            // Change the specific y,x to "b"
+            // Put all info into a new textfile
+
+            string fileName = filename + ".txt";
+
+            string[,] userAvailable = new string[5, 9];
+
+            String[] fileLines = File.ReadAllLines(fileName);
+
+            for (int y = 0; y < 5; y++)
+            {
+                for(int x = 0; x < 9; x++)
+                {
+                    userAvailable[y, x] = fileLines[y].Split(',')[x];
+                }
+            }
+
+            userAvailable[ySlot, xSlot] = "b";
 
 
+           FileInfo saveData = new FileInfo(fileName);
 
+            if (saveData.Exists)
+            {
 
+                File.Delete(fileName); // If it already exists it deletes the text file
+
+            }
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true)) // Creates a new text file with teh desired file path name
+            {
+                for (int y = 0; y < 5; y++) // Loops through all 45 combo boxes
+                {
+                    for (int x = 0; x < 9; x++)
+                    {
+                        if (x < 8) // The first 7 combo boxes on a line because we don't want a comma at the end of each line
+                        {
+                            if(userAvailable[y,x] == "p")
+                            {
+                                file.Write("p,");
+                            }
+                            else if(userAvailable[y, x] == "e")
+                            {
+                                file.Write("e,");
+                            }
+                            else if(userAvailable[y, x] == "d")
+                            {
+                                file.Write("d,");
+                            }
+                            else if (userAvailable[y, x] == "b")
+                            {
+                                file.Write("b,");
+                            }
+                        }
+                        else
+                        {
+                            if (userAvailable[y, x] == "p")
+                            {
+                                file.WriteLine("p");
+                            }
+                            else if (userAvailable[y, x] == "e")
+                            {
+                                file.WriteLine("e");
+                            }
+                            else if (userAvailable[y, x] == "d")
+                            {
+                                file.WriteLine("d");
+                            }
+                            else if (userAvailable[y, x] == "b")
+                            {
+                                file.WriteLine("b");
+                            }
+                        }
+                    }
+                }
+            }
 
         }
 
-    void editRoomTextFile(string[,] room, string fileN)
-    {
-        room[y, x] = "b";
+        void editRoomTextFile(string[,] room, string fileN)
+        {
+            room[y, x] = "b";
 
             string fileName = fileN + ".txt";
 
-        FileInfo saveData = new FileInfo(fileName);
+            FileInfo saveData = new FileInfo(fileName);
 
-        if (saveData.Exists)
-        {
+            if (saveData.Exists)
+            {
 
-            File.Delete(fileName); // If it already exists it deletes the text file
+                File.Delete(fileName); // If it already exists it deletes the text file
 
-        }
+            }
 
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true)) // Creates a new text file with teh desired file path name
-        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true)) // Creates a new text file with teh desired file path name
+            {
             for (int y = 0; y < 5; y++) // Loops through all 45 combo boxes
             {
                 for (int x = 0; x < 9; x++)
@@ -309,6 +439,32 @@ namespace SECMAssignmentCode
 
 
         }
-    }
+        }
+
+        void makeMeetingtxt(Meeting meeting)
+        {
+            string fileName;
+
+            fileName = (meeting.getDayInt().ToString() + meeting.getTime().ToString() + meeting.getRoom().ToString() + ".txt"); 
+
+            FileInfo saveData = new FileInfo(fileName);
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true)) // Creates a new text file with teh desired file path name
+            {
+                file.WriteLine(meeting.getDayInt());
+                file.WriteLine(meeting.getTime());
+                file.WriteLine(meeting.getRoom());
+                foreach(User user in usersInMeeting)
+                {
+                    file.WriteLine(user.getUserName());
+                }
+
+            }
+
+
+
+
+            }
+
     }
 }
