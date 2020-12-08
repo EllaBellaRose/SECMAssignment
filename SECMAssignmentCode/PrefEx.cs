@@ -17,6 +17,7 @@ namespace SECMAssignmentCode
     public partial class PrefEx : Form
     {
         ComboBox[,] prefArray = new ComboBox[5, 9];
+        string[,] userAvailable = new string[5, 9];
 
 
         public PrefEx()
@@ -26,10 +27,12 @@ namespace SECMAssignmentCode
 
         private void PrefEx_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("Drop down lists will appear for you to select when your preferences and exclusions are. If a combo box is not there it means you are already booked into a meeting");
             assignPref();
 
+            loadAvialability();
 
-
+            validAvailable();
 
 
 
@@ -99,6 +102,34 @@ namespace SECMAssignmentCode
 
         }
 
+        void loadAvialability()
+        {
+            string fileName = LoginPage.userName + ".txt";
+
+            String[] fileLines = File.ReadAllLines(fileName);
+
+            for (int y = 0; y < 5; y++)
+            {
+                for (int x = 0; x < 9; x++)
+                {
+                    userAvailable[y, x] = fileLines[y].Split(',')[x];
+                }
+            }
+        }
+
+        void validAvailable()
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                for (int x = 0; x < 9; x++)
+                {
+                    if(userAvailable[y,x] == "b")
+                    {
+                        prefArray[y,x].Hide();
+                    }
+                }
+            }
+        }
 
 
         private void savebtn_Click(object sender, EventArgs e)
@@ -124,30 +155,33 @@ namespace SECMAssignmentCode
                         {
                             if (x < 8) // The first 7 combo boxes on a line because we don't want a comma at the end of each line
                             {
-
-                                if (prefArray[y, x].Text == "Prefer") // If the combo box has Prefer selected it will as a "p" to the text file
+                                if(prefArray[y,x].Visible == false)
                                 {
-
+                                    file.Write("b,");
+                                }
+                                else if (prefArray[y, x].Text == "Prefer") // If the combo box has Prefer selected it will as a "p" to the text file
+                                {
                                     file.Write("p,");
-
                                 }
                                 else if(prefArray[y, x].Text == "Exclude") // If the combo box has Exclude selected it will as a "e" to the text file
-                            {
+                                {
                                     file.Write("e,");
                                 }
-                            else // If the combo box has nothing selected or "Don't Mind" there will be a "d" saved to the text file
-                            {
+                                else // If the combo box has nothing selected or "Don't Mind" there will be a "d" saved to the text file
+                                {
                                     file.Write("d,");
                                 }
 
                             }
                             else if (x == 8) // Exactly the same as the if statement above but for the last ekement in a line so there is no "," at the end of each line
                             {
-                                if (prefArray[y, x].Text == "Prefer")
+                                if (prefArray[y, x].Visible == false)
                                 {
-
+                                    file.Write("b");
+                                }
+                                else if (prefArray[y, x].Text == "Prefer")
+                                {
                                     file.WriteLine("p");
-
                                 }
                                 else if (prefArray[y, x].Text == "Exclude")
                                 {

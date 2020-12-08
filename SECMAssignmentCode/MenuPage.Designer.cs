@@ -142,7 +142,7 @@
             this.viewMeetingbtn.Name = "viewMeetingbtn";
             this.viewMeetingbtn.Size = new System.Drawing.Size(224, 102);
             this.viewMeetingbtn.TabIndex = 17;
-            this.viewMeetingbtn.Text = "View meetings I\'m attending";
+            this.viewMeetingbtn.Text = "View meetings";
             this.viewMeetingbtn.UseVisualStyleBackColor = false;
             this.viewMeetingbtn.Click += new System.EventHandler(this.viewMeetingbtn_Click);
             // 

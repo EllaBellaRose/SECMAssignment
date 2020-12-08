@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.currentMeetingslbx = new System.Windows.Forms.ListBox();
             this.menubtn = new System.Windows.Forms.Button();
+            this.moreInfobtn = new System.Windows.Forms.Button();
+            this.usersAttendinglbx = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // titlelb
@@ -59,7 +61,7 @@
             this.currentMeetingslbx.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentMeetingslbx.FormattingEnabled = true;
             this.currentMeetingslbx.ItemHeight = 26;
-            this.currentMeetingslbx.Location = new System.Drawing.Point(306, 169);
+            this.currentMeetingslbx.Location = new System.Drawing.Point(60, 157);
             this.currentMeetingslbx.Name = "currentMeetingslbx";
             this.currentMeetingslbx.Size = new System.Drawing.Size(399, 342);
             this.currentMeetingslbx.TabIndex = 12;
@@ -76,12 +78,37 @@
             this.menubtn.UseVisualStyleBackColor = false;
             this.menubtn.Click += new System.EventHandler(this.menubtn_Click);
             // 
+            // moreInfobtn
+            // 
+            this.moreInfobtn.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.moreInfobtn.Font = new System.Drawing.Font("Berlin Sans FB", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moreInfobtn.Location = new System.Drawing.Point(478, 265);
+            this.moreInfobtn.Name = "moreInfobtn";
+            this.moreInfobtn.Size = new System.Drawing.Size(228, 80);
+            this.moreInfobtn.TabIndex = 65;
+            this.moreInfobtn.Text = "Show Users Attending";
+            this.moreInfobtn.UseVisualStyleBackColor = false;
+            this.moreInfobtn.Click += new System.EventHandler(this.moreInfobtn_Click);
+            // 
+            // usersAttendinglbx
+            // 
+            this.usersAttendinglbx.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersAttendinglbx.FormattingEnabled = true;
+            this.usersAttendinglbx.ItemHeight = 26;
+            this.usersAttendinglbx.Location = new System.Drawing.Point(738, 157);
+            this.usersAttendinglbx.Name = "usersAttendinglbx";
+            this.usersAttendinglbx.Size = new System.Drawing.Size(245, 342);
+            this.usersAttendinglbx.TabIndex = 66;
+            this.usersAttendinglbx.Visible = false;
+            // 
             // CurrentMeetings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1078, 594);
+            this.Controls.Add(this.usersAttendinglbx);
+            this.Controls.Add(this.moreInfobtn);
             this.Controls.Add(this.menubtn);
             this.Controls.Add(this.currentMeetingslbx);
             this.Controls.Add(this.label1);
@@ -100,5 +127,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox currentMeetingslbx;
         private System.Windows.Forms.Button menubtn;
+        private System.Windows.Forms.Button moreInfobtn;
+        private System.Windows.Forms.ListBox usersAttendinglbx;
     }
 }
